@@ -25,6 +25,8 @@ gl_Position = ProjMat * ModelViewMat * (vec4(Position, 1.0));
 
 // --------------------------------------------------------------------------------------
 // ColorSpace (For minecraft 1.20.5 +)
+// Pass the original color to the fragment shader for every text color.
+GetTagesColor = Color;
 float posSpaceX = (0);
 float posSpaceY = (0);
 vec4 posSpace = vec4(0);
@@ -40,7 +42,6 @@ if((Color).r * 255 == 1 || (Color).r*255 == 2) {
     if((Color).r*255 == 2) {
     posSpaceX *= 2; posSpaceY *= 2;
     }
-    GetTagesColor = Color;
     posSpace = vec4(posSpaceX, posSpaceY, 0, 0);
     gl_Position = ProjMat * ModelViewMat * (vec4(Position, 1.0) + posSpace);
 }
